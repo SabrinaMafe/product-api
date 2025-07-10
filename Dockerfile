@@ -1,8 +1,12 @@
+# Dockerfile para product-api
 FROM eclipse-temurin:17-jdk-jammy
 
 WORKDIR /app
 
 COPY . .
+
+# 🔧 Corrigir permissões dentro do container
+RUN chmod +x mvnw
 
 RUN ./mvnw clean package -DskipTests
 
