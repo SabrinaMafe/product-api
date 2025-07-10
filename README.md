@@ -1,109 +1,66 @@
-# 📦 product-api
+# 📦 Product API
 
-A RESTful API for managing products and categories, with filtering, pagination, sorting, validation and standardized error handling. Built with Java, Spring Boot and Spring Data JPA.
+A RESTful API for managing products and categories, built with Java and Spring Boot.
 
 ## 🚀 Features
 
-* CRUD for Products
-* CRUD for Categories
-* Relationship: each Product belongs to a Category
-* Filtering by category, name (partial match), price range
-* Pagination and sorting support
-* Field validation with meaningful error responses
-* Global exception handling for validation and unexpected errors
-* API documentation with Swagger/OpenAPI
+* CRUD for Products and Categories
+* Dynamic filtering, pagination, and sorting
+* API documentation with Swagger UI
+* H2 in-memory database for development/demo
 
-## 🛠️ Technologies
+## 🔧 Technologies
 
 * Java 17
-* Spring Boot 3.x
+* Spring Boot 3.2.x
 * Spring Data JPA
 * H2 Database
+* SpringDoc OpenAPI 2.5.0
 * Lombok
-* Swagger/OpenAPI
 
-## 📦 How to run
+## 🌐 Public Demo
+
+* 🔗 **Swagger UI:** [https://product-api-mtqm.onrender.com/swagger-ui/index.html](https://product-api-mtqm.onrender.com/swagger-ui/index.html)
+
+## 📦 How to run locally
+
+1️⃣ **Clone the repository:**
+
+```bash
+git clone https://github.com/SabrinaMafe/product-api.git
+```
+
+2️⃣ **Build the project:**
+
+```bash
+./mvnw clean install
+```
+
+3️⃣ **Run the application:**
 
 ```bash
 ./mvnw spring-boot:run
 ```
 
-Access Swagger UI at: [http://localhost:8080/swagger-ui/index.html](http://localhost:8080/swagger-ui/index.html)
+4️⃣ **Access locally:**
 
-Access H2 Console at: [http://localhost:8080/h2-console](http://localhost:8080/h2-console)
+* Swagger UI: [http://localhost:8080/swagger-ui/index.html](http://localhost:8080/swagger-ui/index.html)
+* H2 Console: [http://localhost:8080/h2-console](http://localhost:8080/h2-console)
 
-## 📂 API Overview
+## ⚙️ Default credentials
 
-### Products Endpoints
+* H2 Database:
 
-* `GET /api/products`: List products (supports filters and pagination)
+    * JDBC URL: `jdbc:h2:mem:productdb`
+    * User: `sa`
+    * Password: *(empty)*
 
-    * Query parameters:
+## ✨ Author
 
-        * `name`: filter by partial name
-        * `categoryId`: filter by category ID
-        * `minPrice`: filter by minimum price
-        * `maxPrice`: filter by maximum price
-        * `page`, `size`, `sort`: pagination and sorting
-
-* `POST /api/products`: Create product (requires valid fields)
-
-    * Example request body:
-
-      ```json
-      {
-        "name": "Example Product",
-        "description": "Optional description",
-        "price": 100.00,
-        "category": { "id": 1 }
-      }
-      ```
-
-* `GET /api/products/{id}`: Get product by ID
-
-* `DELETE /api/products/{id}`: Delete product by ID
-
-### Categories Endpoints
-
-* `GET /api/categories`: List all categories
-
-* `POST /api/categories`: Create category
-
-    * Example request body:
-
-      ```json
-      {
-        "name": "Electronics"
-      }
-      ```
-
-* `GET /api/categories/{id}`: Get category by ID
-
-* `DELETE /api/categories/{id}`: Delete category by ID
-
-## ✅ Validation rules
-
-* `Product.name`: required, non-blank
-* `Product.price`: required, positive number
-* `Product.category`: required
-* `Category.name`: required, non-blank
-
-## ⚠️ Error handling
-
-Validation errors return `400 Bad Request` with detailed field errors:
-
-```json
-{
-  "timestamp": "2023-01-01T12:00:00",
-  "status": 400,
-  "message": "Validation failed",
-  "errors": {
-    "name": "must not be blank",
-    "price": "must be greater than 0"
-  }
-}
-```
+Sabrina Mafé
+[LinkedIn](https://l1nk.dev/povrg)
+Email: [sabrinamafe21@gmail.com](mailto:sabrinamafe21@gmail.com)
 
 ---
 
-✨ *Thank you for visiting this project!*
+*Thank you for visiting this repository! ⭐*
