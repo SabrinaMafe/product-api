@@ -7,6 +7,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.math.BigDecimal;
 import java.util.Optional;
 
 @Service
@@ -30,4 +31,29 @@ public class ProductService {
     public void deleteById(Long id) {
         productRepository.deleteById(id);
     }
+
+    public Page<Product> findByFilters(String name, Long categoryId, BigDecimal minPrice, BigDecimal maxPrice, Pageable pageable) {
+        return productRepository.findAll((root, query, cb) -> {
+            var predicates = cb.conjunction();
+
+            if (name != null && !name.isBlank()) {
+                predicates.getExpressions().add(cb.like(cb.lower(root.get("name")), "%" + name.toLowerCase() + "%"));
+            }
+
+            if (categoryId != null) {
+                predicates.getExpressions().add(cb.equal(root.get("category").get("id"), categoryId));
+            }
+
+            if (minPrice != null) {
+                predicates.getExpressions().add(cb.greaterThanOrEqualTo(root.get("price"), minPrice));
+            }
+
+            if (maxPrice != null) {
+                predicates.getExpressions().add(cb.lessThanOrEqualTo(root.get("price"), maxPrice));
+            }
+
+            return predicates;
+        }, pageable);
+    }
+
 }
