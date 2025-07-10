@@ -11,10 +11,13 @@ import java.math.BigDecimal;
 import java.util.Optional;
 
 @Service
-@RequiredArgsConstructor
 public class ProductService {
 
     private final ProductRepository productRepository;
+
+    public ProductService(ProductRepository productRepository) {
+        this.productRepository = productRepository;
+    }
 
     public Page<Product> findAll(Pageable pageable) {
         return productRepository.findAll(pageable);
