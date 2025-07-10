@@ -2,6 +2,7 @@ package com.sabrinamafe.product.product_api.controller;
 
 import com.sabrinamafe.product.product_api.model.Category;
 import com.sabrinamafe.product.product_api.service.CategoryService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -28,7 +29,7 @@ public class CategoryController {
     }
 
     @PostMapping
-    public ResponseEntity<Category> createCategory(@RequestBody Category category) {
+    public ResponseEntity<Category> createCategory(@Valid @RequestBody Category category) {
         return ResponseEntity.ok(categoryService.save(category));
     }
 

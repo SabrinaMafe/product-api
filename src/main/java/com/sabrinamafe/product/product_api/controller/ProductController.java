@@ -2,6 +2,7 @@ package com.sabrinamafe.product.product_api.controller;
 
 import com.sabrinamafe.product.product_api.model.Product;
 import com.sabrinamafe.product.product_api.service.ProductService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -39,7 +40,7 @@ public class ProductController {
     }
 
     @PostMapping
-    public ResponseEntity<Product> createProduct(@RequestBody Product product) {
+    public ResponseEntity<Product> createProduct(@Valid @RequestBody Product product) {
         return ResponseEntity.ok(productService.save(product));
     }
 
