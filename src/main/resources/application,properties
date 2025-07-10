@@ -1,7 +1,7 @@
-# Porta din‚mica para funcionar no Render e padr„o 8080 localmente
+# Porta din√¢mica para Render (PORT definida pelo ambiente) e padr√£o 8080 localmente
 server.port=${PORT:8080}
 
-# H2 Database (usado apenas como banco em memÛria para dev/demo)
+# H2 Database (em mem√≥ria para desenvolvimento/demo)
 spring.datasource.url=jdbc:h2:mem:productdb
 spring.datasource.driverClassName=org.h2.Driver
 spring.datasource.username=sa
