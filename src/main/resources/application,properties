@@ -1,5 +1,7 @@
 # Porta dinâmica para Render (PORT definida pelo ambiente) e padrão 8080 localmente
 server.port=${PORT:8080}
+server.address=0.0.0.0
+
 
 # H2 Database (em memória para desenvolvimento/demo)
 spring.datasource.url=jdbc:h2:mem:productdb
