@@ -63,4 +63,18 @@ Email: [sabrinamafe21@gmail.com](mailto:sabrinamafe21@gmail.com)
 
 ---
 
+## 🔖 Planned Improvements (To-Do)
+
+* Migrate from H2 to PostgreSQL with real persistence.
+* Add authentication and authorization using JWT (Spring Security).
+* Implement unit and integration tests (JUnit + Mockito).
+* Add Docker support and Docker Compose configuration.
+* Set up CI/CD pipeline with GitHub Actions.
+* Improve API versioning (e.g., `/api/v1`).
+* Enhance Swagger/OpenAPI documentation with annotations.
+* Implement better error handling with standardized error responses.
+* Optional: build a simple React frontend to consume this API.
+
+---
+
 *Thank you for visiting this repository! ⭐*
